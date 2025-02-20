@@ -11,3 +11,7 @@
  - React: Una biblioteca de JavaScript para construir interfaces de usuario.
 - JavaScript: El lenguaje de programación utilizado para la lógica del juego.
 - CSS: Para el diseño y estilo del juego.
+
+
+
+[URL del proyecto](https://tictactoe-andrea-alonso.netlify.app/)
