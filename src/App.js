@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function Square({value, onSquareClick}) {
+function Square({ value, onClick }) {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button className="square" onClick={onClick}>
       {value}
     </button>
   );
@@ -28,22 +26,31 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  function renderSquare(i) {
+    return (
+      <Square
+        value={squares[i]}
+        onClick={() => handleClick(i)}
+      />
+    );
+  }
+
   return (
     <>
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
       </div>
       <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
       </div>
       <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
       </div>
     </>
   );
