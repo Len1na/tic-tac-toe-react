@@ -1,8 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Square({ value }) {
   return <button className="square">{value}</button>;
 }
+
+Square.propTypes = {
+  value: PropTypes.string.isRequired,
+};
 
 export default function Board() {
   return (
@@ -25,5 +30,3 @@ export default function Board() {
     </>
   );
 }
-
-
