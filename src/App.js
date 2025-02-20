@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 function Square({ value, onClick }) {
   return (
@@ -9,18 +8,22 @@ function Square({ value, onClick }) {
   );
 }
 
-Square.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
-};
-
 export default function Board() {
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   function handleClick(i) {
-    const newSquares = squares.slice();
-    newSquares[i] = 'X';
-    setSquares(newSquares);
+    if (squares[i]) {
+      return;
+    }
+    const nextSquares = squares.slice();
+    if (xIsNext) {
+      nextSquares[i] = 'X';
+    } else {
+      nextSquares[i] = 'O';
+    }
+    setSquares(nextSquares);
+    setXIsNext(!xIsNext);
   }
 
   function renderSquare(i) {
